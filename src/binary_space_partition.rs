@@ -24,7 +24,7 @@ fn bsp_gen(
     map_subsection_min_room_width_as_str: &str,
     map_subsection_min_room_height_as_str: &str,
 ) -> Result<String> {
-    let default_hash: u64 = rand::thread_rng().gen();
+    let default_hash: u64 = rand::rng().random();
     let width = width_as_str.parse::<usize>()?;
     let height = height_as_str.parse::<usize>()?;
     let map_subsection_min_room_width = map_subsection_min_room_width_as_str.parse::<usize>()?;
@@ -167,7 +167,7 @@ impl Leaf {
         // otherwise random
 
         // this is the random choice
-        let mut split_horz = match rng.gen_range(0..2) {
+        let mut split_horz = match rng.random_range(0..2) {
             0 => false,
             _ => true,
         };
@@ -189,7 +189,7 @@ impl Leaf {
             return false;
         }
 
-        let split_pos = rng.gen_range(self.min_size..max);
+        let split_pos = rng.random_range(self.min_size..max);
         if split_horz {
             self.left_child = Some(Box::new(Leaf::new(
                 self.x,
@@ -244,10 +244,10 @@ impl Leaf {
 
         // if last level, add a room
         if self.is_leaf() {
-            let width = rng.gen_range(self.min_room_width..=self.width);
-            let height = rng.gen_range(self.min_room_height..=self.height);
-            let x = rng.gen_range(0..=self.width - width);
-            let y = rng.gen_range(0..=self.height - height);
+            let width = rng.random_range(self.min_room_width..=self.width);
+            let height = rng.random_range(self.min_room_height..=self.height);
+            let x = rng.random_range(0..=self.width - width);
+            let y = rng.random_range(0..=self.height - height);
 
             self.room = Some(Room::new(
                 format!("bsp room"),

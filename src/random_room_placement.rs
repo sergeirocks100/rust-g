@@ -1,5 +1,5 @@
 use crate::error::Result;
-use rand::distributions::WeightedIndex;
+use rand::distr::weighted::WeightedIndex;
 use rand::prelude::*;
 use rand::rngs::StdRng;
 use rand::Rng;
@@ -20,7 +20,7 @@ fn random_room_gen(
     desired_room_count_as_str: &str,
     hash_as_str: &str,
 ) -> Result<String> {
-    let default_hash: u64 = rand::thread_rng().gen();
+    let default_hash: u64 = rand::rng().random();
     let width = width_as_str.parse::<usize>()?;
     let height = height_as_str.parse::<usize>()?;
     let desired_room_count = desired_room_count_as_str.parse::<usize>()?;
@@ -53,8 +53,8 @@ impl RandomRoomLevel {
         let mut attempts = 0;
         while self.level.rooms.len() <= max_rooms && attempts <= max_attempts {
             attempts += 1;
-            let mut x = rng.gen_range(0..self.level.width);
-            let mut y = rng.gen_range(0..self.level.height);
+            let mut x = rng.random_range(0..self.level.width);
+            let mut y = rng.random_range(0..self.level.height);
 
             let choices = [
                 RoomDimensions::Maint3x3,
@@ -66,7 +66,7 @@ impl RandomRoomLevel {
             ];
             let weights = [4, 3, 4, 3, 2, 1];
             let dist = WeightedIndex::new(&weights).unwrap();
-            //let mut rng = thread_rng();
+            //let mut rng = rng();
             let room_layout = &choices[dist.sample(rng)];
             let width = room_layout.get_width();
             let height = room_layout.get_height();
