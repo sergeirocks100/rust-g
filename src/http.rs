@@ -71,13 +71,13 @@ pub static HTTP_CLIENT: Lazy<ureq::Agent> = Lazy::new(ureq::agent);
 // ----------------------------------------------------------------------------
 // Request construction and execution
 
-pub struct RequestPrep {
+struct RequestPrep {
     req: ureq::Request,
     output_filename: Option<String>,
     body: Vec<u8>,
 }
 
-pub fn construct_request(
+fn construct_request(
     method: &str,
     url: &str,
     body: &str,
@@ -123,7 +123,7 @@ pub fn construct_request(
     })
 }
 
-pub fn submit_request(prep: RequestPrep) -> Result<String> {
+fn submit_request(prep: RequestPrep) -> Result<String> {
     let response = prep.req.send_bytes(&prep.body).map_err(Box::new)?;
 
     let body;

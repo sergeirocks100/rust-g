@@ -67,13 +67,11 @@ fast_poisson = { version = "=0.5.2", optional = true, features = [
 symphonia = { version = "0.5.4", optional = true, features = [
     "all-codecs",
 ] }
-concat-string = { version = "1.0.1", optional = true }
 
 [features]
 default = [
     "acreplace",
     "batchnoise",
-    "binary_space_partition",
     "cellularnoise",
     "dmi",
     "file",
@@ -84,7 +82,6 @@ default = [
     "json",
     "log",
     "noise",
-    "random_room_placement",
     "rustls_tls",
     "sanitize",
     "sound_len",
@@ -97,7 +94,6 @@ default = [
 all = [
     "acreplace",
     "batchnoise",
-    "binary_space_partition",
     "cellularnoise",
     "dmi",
     "file",
@@ -108,7 +104,6 @@ all = [
     "json",
     "log",
     "noise",
-    "random_room_placement",
     "rustls_tls",
     "sanitize",
     "sound_len",
@@ -126,7 +121,6 @@ all = [
 
 # default features
 acreplace = ["aho-corasick"]
-binary_space_partition = ["rand", "rayon", "serde", "serde_json", "sha2"]
 batchnoise = ["dbpnoise"]
 cellularnoise = ["rand", "rayon"]
 dmi = ["png", "image"]
@@ -160,7 +154,6 @@ iconforge = [
 ]
 json = ["serde", "serde_json"]
 log = ["chrono"]
-random_room_placement = ["rand", "rayon", "serde", "serde_json", "sha2"]
 sanitize = ["ammonia", "serde_json"]
 sound_len = ["symphonia"]
 sql = ["mysql", "serde", "serde_json", "once_cell", "dashmap", "jobs"]
@@ -169,7 +162,6 @@ toml = ["serde", "serde_json", "toml-dep"]
 url = ["url-dep", "percent-encoding"]
 
 # additional features
-influxdb2 = ["concat-string", "serde", "serde_json", "http"]
 pathfinder = ["num-integer", "pathfinding", "serde", "serde_json"]
 poissonnoise = ["fast_poisson"]
 redis_pubsub = ["flume", "redis", "serde", "serde_json"]

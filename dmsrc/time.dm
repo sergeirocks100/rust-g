@@ -5,6 +5,3 @@
 /// Returns the timestamp as a string
 /proc/rustg_unix_timestamp()
 	return RUSTG_CALL(RUST_G, "unix_timestamp")()
-/// Returns the timestamp as an integer
-/proc/rustg_unix_timestamp_int()
-	return RUSTG_CALL(RUST_G, "unix_timestamp_int")()
