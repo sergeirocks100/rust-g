@@ -3,12 +3,10 @@
 rust-g (pronounced rusty-g) is a library which offloads certain expensive or
 difficult tasks from BYOND.
 
-This library is currently used in the [beestation] codebase, and is required for
+This library is currently used in the [GearStation](https://github.com/sergeirocks100/GearStation_Yog) 
+codebase, based on the fork made by [BeeStation](https://github.com/BeeStation/rust-g), and is required for
 it to run. A pre-compiled DLL version can be found in the repo root, but you
-can build your own from this repo at your preference. Builds can also be found
-on the [releases page].
-
-[releases page]: https://github.com/beestation/rust-g/releases
+can build your own from this repo at your preference.
 
 ## Dependencies
 
