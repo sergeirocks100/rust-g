@@ -9,7 +9,7 @@ else
     rm -rf "$HOME/BYOND"
     mkdir -p "$HOME/BYOND"
     cd "$HOME/BYOND"
-    curl "http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip
+    curl -H -v "User-Agent: GearStation/1.0 CI Script" "https://web.archive.org/web/20250515040112/https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip
     unzip byond.zip
     rm byond.zip
     cd byond

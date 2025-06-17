@@ -22,7 +22,7 @@ jobs:
         with:
           name: Windows Build (Default Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/windows-default
 
       - name: Download Linux Build Artifact (Default Features)
@@ -30,7 +30,7 @@ jobs:
         with:
           name: Linux Build (Default Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/linux-default
 
       # Download 64-bit artifacts
@@ -39,7 +39,7 @@ jobs:
         with:
           name: Windows Build x64 (Default Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/windows-x64-default
 
       - name: Download Linux x64 Build Artifact (Default Features)
@@ -47,7 +47,7 @@ jobs:
         with:
           name: Linux Build x64 (Default Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/linux-x64-default
 
       # Download 32-bit artifacts (All Features)
@@ -56,7 +56,7 @@ jobs:
         with:
           name: Windows Build (All Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/windows-all
 
       - name: Download Linux Build Artifact (All Features)
@@ -64,7 +64,7 @@ jobs:
         with:
           name: Linux Build (All Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/linux-all
 
       # Download 64-bit artifacts (All Features)
@@ -73,7 +73,7 @@ jobs:
         with:
           name: Windows Build x64 (All Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/windows-x64-all
 
       - name: Download Linux x64 Build Artifact (All Features)
@@ -81,7 +81,7 @@ jobs:
         with:
           name: Linux Build x64 (All Features)
           workflow: rust.yml
-          branch: current-bee
+          branch: current-gear
           path: ./artifacts/linux-x64-all
 
       - name: Create Release
