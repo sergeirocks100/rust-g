@@ -70,9 +70,6 @@ pub enum Error {
     IconForge(String),
     #[error("Panic during function execution: {0}")]
     Panic(String),
-	#[cfg(feature = "influxdb2")]
-    #[error("Invalid metrics format")]
-    InvalidMetrics,
 }
 
 impl From<Utf8Error> for Error {

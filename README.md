@@ -3,10 +3,12 @@
 rust-g (pronounced rusty-g) is a library which offloads certain expensive or
 difficult tasks from BYOND.
 
-This library is currently used in the [GearStation](https://github.com/sergeirocks100/GearStation_Yog) 
-codebase, based on the fork made by [BeeStation](https://github.com/BeeStation/rust-g), and is required for
+This library is currently used in the [beestation] codebase, and is required for
 it to run. A pre-compiled DLL version can be found in the repo root, but you
-can build your own from this repo at your preference.
+can build your own from this repo at your preference. Builds can also be found
+on the [releases page].
+
+[releases page]: https://github.com/beestation/rust-g/releases
 
 ## Dependencies
 
@@ -87,7 +89,6 @@ You can't use `--all-features` because of conflicting `native_tls` and `rustls_t
 
 The default features are:
 * acreplace: Aho-Corasick string matching and replacement.
-* binary_space_partition: Function to generate "rooms" more or less evenly distributed over a given area.
 * cellularnoise: Function to generate cellular automata-based noise.
 * dmi: DMI manipulations which are impossible or degraded from within BYOND.
   Mostly used by the asset cache subsystem to improve load times.
@@ -99,7 +100,6 @@ The default features are:
 * json: Function to check JSON validity.
 * log: Faster log output.
 * noise: 2d Perlin noise.
-* random_room_placement: Function to generate "rooms" randomly placed in a given area, only taking care to not overlap one another.
 * sound_len: A mostly codec-agnostic library for reading the duration of an audio file.
 * sql: Asynchronous MySQL/MariaDB client library.
   * There are also two sub-features: `native_tls` and `rustls_tls`. `rustls_tls` is a default feature, while the former is not.
