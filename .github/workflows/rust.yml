@@ -20,13 +20,13 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: Clippy (all features)
-        run: cargo clippy -Z build-std --target i686-win7-windows-msvc --features all --locked -- -D warnings
+        run: cargo clippy build-std --target i686-win7-windows-msvc --features all --locked -- -D warnings
 
       - name: Rustfmt
         run: cargo fmt -- --check
 
       - name: Build (release) (all features)
-        run: cargo build -Z build-std --target i686-win7-windows-msvc --locked --release --features all
+        run: cargo build build-std --target i686-win7-windows-msvc --locked --release --features all
 
       - name: Rename artifacts (all features)
         run: |
@@ -43,7 +43,7 @@ jobs:
             target/full_rust_g.dm
 
       - name: Build (release) (default features)
-        run: cargo build -Z build-std --target i686-win7-windows-msvc --locked --release
+        run: cargo build build-std --target i686-win7-windows-msvc --locked --release
 
       - uses: actions/upload-artifact@v4
         with:
@@ -66,13 +66,13 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: x64 Clippy (all features)
-        run: cargo clippy -Z build-std --target x86_64-pc-windows-msvc --features all,allow_non_32bit --locked -- -D warnings
+        run: cargo clippy build-std --target x86_64-pc-windows-msvc --features all,allow_non_32bit --locked -- -D warnings
 
       - name: Rustfmt
         run: cargo fmt -- --check
 
       - name: x64 Build (release) (all features)
-        run: cargo build -Z build-std --target x86_64-pc-windows-msvc --features all,allow_non_32bit --locked --release
+        run: cargo build build-std --target x86_64-pc-windows-msvc --features all,allow_non_32bit --locked --release
 
       - name: Rename x64 artifacts (all features)
         run: |
@@ -89,7 +89,7 @@ jobs:
             target/full_rust_g.dm
 
       - name: x64 Build (release) (default features)
-        run: cargo build -Z build-std --target x86_64-pc-windows-msvc --features allow_non_32bit --locked --release
+        run: cargo build build-std --target x86_64-pc-windows-msvc --features allow_non_32bit --locked --release
 
       - name: Rename x64 artifacts (default features)
         run: |
