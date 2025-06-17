@@ -1,5 +1,8 @@
 // #![forbid(unsafe_op_in_unsafe_fn)] - see github.com/rust-lang/rust/issues/121483
 
+#[cfg(feature = "concat-string")]
+#[macro_use(concat_string)]
+extern crate concat_string;
 #[macro_use]
 mod byond;
 #[allow(dead_code)]
@@ -10,6 +13,8 @@ mod jobs;
 
 #[cfg(feature = "acreplace")]
 pub mod acreplace;
+#[cfg(feature = "binary_space_partition")]
+pub mod binary_space_partition;
 #[cfg(feature = "cellularnoise")]
 pub mod cellularnoise;
 #[cfg(feature = "dbpnoise")]
@@ -26,6 +31,8 @@ pub mod hash;
 pub mod http;
 #[cfg(feature = "iconforge")]
 pub mod iconforge;
+#[cfg(feature = "influxdb2")]
+pub mod influxdb2;
 #[cfg(feature = "json")]
 pub mod json;
 #[cfg(feature = "log")]
@@ -34,6 +41,8 @@ pub mod log;
 pub mod noise_gen;
 #[cfg(feature = "pathfinder")]
 pub mod pathfinder;
+#[cfg(feature = "random_room_placement")]
+pub mod random_room_placement;
 #[cfg(feature = "poissonnoise")]
 pub mod poissonnoise;
 #[cfg(feature = "redis_pubsub")]
