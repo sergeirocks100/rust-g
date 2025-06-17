@@ -158,6 +158,7 @@ impl Leaf {
                 self.left_child.as_mut().unwrap().generate(rng);
                 self.right_child.as_mut().unwrap().generate(rng);
             }
+	}		
 
     fn split(&mut self, rng: &mut StdRng) -> bool {
         // if width >25% height, split vertically
