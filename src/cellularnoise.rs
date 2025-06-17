@@ -25,7 +25,7 @@ fn noise_gen(
     let mut filled_vec = (0..width + 3)
         .into_par_iter()
         .map(|x| {
-            let mut rng = rand::thread_rng();
+            let mut rng = rand::rng();
             (0..height + 3)
                 .map(|y| {
                     if x == 0 || y == 0 || x == width + 2 || y == height + 2 {
