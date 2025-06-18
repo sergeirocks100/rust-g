@@ -103,7 +103,7 @@ impl BspLevel {
             }
 
             for corridor in &leaf.corridors {
-                self.level.add_room(corridor);
+                self.level.add_room(&corridor);
             }
         }
     }
@@ -153,12 +153,13 @@ impl Leaf {
     }
 
     fn generate(&mut self, rng: &mut StdRng) {
-        if self.is_leaf()
-            && self.split(rng) {
+        if self.is_leaf() {
+            if self.split(rng) {
                 self.left_child.as_mut().unwrap().generate(rng);
                 self.right_child.as_mut().unwrap().generate(rng);
             }
-	}		
+        }
+    }
 
     fn split(&mut self, rng: &mut StdRng) -> bool {
         // if width >25% height, split vertically
@@ -166,7 +167,10 @@ impl Leaf {
         // otherwise random
 
         // this is the random choice
-        let mut split_horz = !matches!(rng.random_range(0..2), 0);
+        let mut split_horz = match rng.random_range(0..2) {
+            0 => false,
+            _ => true,
+        };
 
         // then override with width/height check
         if self.width > self.height && (self.width as f32 / self.height as f32) >= 1.25 {
@@ -246,7 +250,7 @@ impl Leaf {
             let y = rng.random_range(0..=self.height - height);
 
             self.room = Some(Room::new(
-                "bsp room".to_string(),
+                format!("bsp room"),
                 x + self.x,
                 y + self.y,
                 width,
@@ -279,7 +283,7 @@ impl Leaf {
     }
 
     fn iter(&self) -> LeafIterator {
-        LeafIterator::new(self)
+        LeafIterator::new(&self)
     }
 }
 
@@ -303,10 +307,10 @@ impl<'a> LeafIterator<'a> {
     // and add any child leaves to the node vec
     fn add_subtrees(&mut self, node: &'a Leaf) {
         if let Some(ref left) = node.left_child {
-            self.right_nodes.push(left);
+            self.right_nodes.push(&*left);
         }
         if let Some(ref right) = node.right_child {
-            self.right_nodes.push(right);
+            self.right_nodes.push(&*right);
         }
 
         self.current_node = Some(node);
@@ -323,7 +327,7 @@ impl<'a> Iterator for LeafIterator<'a> {
         }
 
         match result {
-            Some(leaf) => Some(leaf),
+            Some(leaf) => Some(&*leaf),
             None => None,
         }
     }
@@ -362,9 +366,9 @@ impl Level {
         for _ in 0..self.height {
             let gen_floor_first = true;
 
-            let mut row = vec![TileType::Floor as usize; self.width];
+            let mut row = vec![TileType::Floor as usize; self.width as usize];
             if !gen_floor_first {
-                row = vec![TileType::Space as usize; self.width];
+                row = vec![TileType::Space as usize; self.width as usize];
             }
 
             new_board.push(row);
@@ -372,8 +376,8 @@ impl Level {
         for room in &self.rooms {
             for row in 0..room.height {
                 for col in 0..room.width {
-                    let y = (room.y + row);
-                    let x = (room.x + col);
+                    let y = (room.y + row) as usize;
+                    let x = (room.x + col) as usize;
                     if row == 0 || col == 0 || row == room.height - 1 || col == room.width - 1 {
                         // might just let byond handle the walls
                         new_board[y][x] = TileType::Wall as usize;
@@ -395,11 +399,11 @@ impl Level {
 
 impl fmt::Display for Level {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        for row in 0..self.height{
-            for col in 0..self.width{
+        for row in 0..self.height as usize {
+            for col in 0..self.width as usize {
                 write!(f, "{}", self.board[row][col])?
             }
-            writeln!(f)?
+            write!(f, "\n")?
         }
 
         Ok(())
