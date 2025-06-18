@@ -282,7 +282,7 @@ impl Leaf {
         }
     }
 
-    fn iter(&self) -> LeafIterator {
+    fn iter(&self) -> LeafIterator<'_> {
         LeafIterator::new(&self)
     }
 }
