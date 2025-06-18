@@ -105,6 +105,7 @@ all = [
     "hash",
     "http",
     "iconforge",
+    "influxdb2",
     "json",
     "log",
     "noise",
