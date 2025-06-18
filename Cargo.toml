@@ -126,8 +126,8 @@ all = [
 
 # default features
 acreplace = ["aho-corasick"]
-binary_space_partition = ["rand", "rayon", "serde", "serde_json", "sha2"]
 batchnoise = ["dbpnoise"]
+binary_space_partition = ["rand", "rayon", "serde", "serde_json", "sha2"]
 cellularnoise = ["rand", "rayon"]
 dmi = ["png", "image"]
 file = []

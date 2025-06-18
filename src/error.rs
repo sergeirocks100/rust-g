@@ -70,7 +70,7 @@ pub enum Error {
     IconForge(String),
     #[error("Panic during function execution: {0}")]
     Panic(String),
-	#[cfg(feature = "influxdb2")]
+    #[cfg(feature = "influxdb2")]
     #[error("Invalid metrics format")]
     InvalidMetrics,
 }

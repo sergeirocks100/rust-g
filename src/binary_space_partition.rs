@@ -149,7 +149,7 @@ impl Leaf {
     }
 
     fn is_leaf(&self) -> bool {
-        self.left_child.is_none() && self.right_child.is_none() 
+        self.left_child.is_none() && self.right_child.is_none()
     }
 
     fn generate(&mut self, rng: &mut StdRng) {

@@ -48,7 +48,6 @@ byond_fn!(
     }
 );
 
-
 byond_fn!(
     fn unix_timestamp_int() {
         Some(

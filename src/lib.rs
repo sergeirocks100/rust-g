@@ -41,10 +41,10 @@ pub mod log;
 pub mod noise_gen;
 #[cfg(feature = "pathfinder")]
 pub mod pathfinder;
-#[cfg(feature = "random_room_placement")]
-pub mod random_room_placement;
 #[cfg(feature = "poissonnoise")]
 pub mod poissonnoise;
+#[cfg(feature = "random_room_placement")]
+pub mod random_room_placement;
 #[cfg(feature = "redis_pubsub")]
 pub mod redis_pubsub;
 #[cfg(feature = "redis_reliablequeue")]
